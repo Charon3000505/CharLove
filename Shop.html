@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clover Street - Shop</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/nav.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body { font-family: 'Montserrat', sans-serif; background-color: #0a0a0a; color: #fff; }
+
+/* Soft Neon Glow */
+.neon-glow {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.neon-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(255,0,255,0.4);
+}
+
+/* Front/Back Hover Smooth */
+.front-img, .back-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.back-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(1.05);
+}
+.group:hover .front-img {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.group:hover .back-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay only for glow */
+.overlay-glow {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.15);
+  transition: background-color 0.3s;
+}
+.group:hover .overlay-glow {
+  background-color: rgba(0,0,0,0.25);
+}
+
+/* Navbar underline effect */
+.nav-link { position: relative; letter-spacing: 1px; font-weight: 500; }
+.nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: #fff; transition: width 0.3s ease; }
+.nav-link:hover::after { width: 100%; }
+</style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Main Navbar -->
+  <header id="navbar" class="sticky top-0 z-50 bg-black border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <!-- Top Section - Logo and Actions -->
+            <div class="flex items-center justify-between mb-4">
+                <!-- Left Side - Logo -->
+                <div class="flex items-center">
+                    <!-- Clover Icon -->
+                    <div class="flex items-center justify-center mr-3">
+                    </div>
+                    <!-- Logo Text -->
+                    <img src="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif" alt="" class="w-24 h-24">
+                </div>
+                
+                    <div>
+                      <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+                    </div>
+
+                <!-- Right Side - Icons -->
+                <div class="flex items-center space-x-6">
+                    <!-- Search Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    
+                    <!-- User Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                      <a href="# class="relative text-white hover:text-gray-300 transition">
+                        <i class="fas fa-user text-lg"></i>
+                      </a>
+                    </button>
+                    
+                    <!-- Cart Icon -->
+                    <button class="relative text-white hover:text-gray-300 transition">
+                      <a href="cart.html" class="relative text-white hover:text-gray-300 transition">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                      </a>
+                    </button>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobileMenuToggle" class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex justify-center space-x-8">
+                <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    HOME
+                </a>
+                <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    SHOP
+                </a>
+                <a href="about.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    About
+                </a>
+            </nav>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        HOME
+                    </a>
+                    <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        SHOP
+                    </a>
+                    <a href="#" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        About
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<!-- Hero -->
+<section class="relative bg-black h-64 flex items-center justify-center">
+  <img src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
+  <h1 class="text-5xl font-bold text-white z-10 tracking-wide">SHOP CharLove</h1>
+</section>
+
+<!-- Collections -->
+<section class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-3xl font-bold">Collections</h2>
+    <select class="bg-gray-800 text-white px-4 py-2 rounded-md border border-gray-700">
+      <option value="all">All Products</option>
+      <option value="hoodie">Hoodies</option>
+      <option value="tshirt">T-Shirts</option>
+      <option value="pants">Pants</option>
+      <option value="accessories">Accessories</option>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <!-- Card 1 -->
+    <a href="Product_detail.html" class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/736x/1c/77/f5/1c77f559356807b6b0c85c003da4822b.jpg" class="front-img" alt="Street Hoodie Front">
+      <img src="https://i.pinimg.com/736x/7c/24/1f/7c241f7e3faa9d4921ec32696cb62cf8.jpg" class="back-img" alt="Street Hoodie Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-red-600">NEW</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Street Hoodie</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$89</p>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <!-- Card 2 -->
+<a href="product_detail.html" class="group relative block bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+  <img src="https://i.pinimg.com/736x/7c/24/1f/7c241f7e3faa9d4921ec32696cb62cf8.jpg" class="front-img" alt="Urban T-Shirt Front">
+  <img src="https://i.pinimg.com/736x/d1/04/c1/d104c19593b1c3975739f49371018473.jpg" class="back-img" alt="Urban T-Shirt Back">
+  <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-green-500">HOT</span>
+  <div class="overlay-glow"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+    <h3 class="text-white font-semibold text-lg mb-1">Urban T-Shirt</h3>
+    <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+    <p class="text-white font-bold text-lg">$49</p>
+  </div>
+</a>
+
+
+    <!-- Card 3 -->
+    <a href="Product_detail.html" class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/736x/d1/04/c1/d104c19593b1c3975739f49371018473.jpg" class="front-img" alt="Street Pants Front">
+      <img src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg" class="back-img" alt="Street Pants Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-yellow-500">SALE</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Street Pants</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$75</p>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="Product_detail.html" class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg" class="front-img" alt="Street Cap Front">
+      <img src="https://i.pinimg.com/736x/1c/77/f5/1c77f559356807b6b0c85c003da4822b.jpg" class="back-img" alt="Street Cap Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-red-600">NEW</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Street Cap</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$35</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-gray-800 py-8 mt-16">
+  <div class="container mx-auto px-4 text-center text-gray-400">
+    <p>&copy; 2026 Clover Street. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

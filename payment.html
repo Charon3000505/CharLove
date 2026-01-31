@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clover | Payment</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+body { font-family: 'Montserrat', sans-serif; background-color: #0a0a0a; color: #fff; }
+.neon-glow { border-radius: 1rem; transition: 0.3s; }
+.neon-glow:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(0,255,255,0.5), 0 0 30px rgba(255,0,255,0.4); }
+
+input, select { background-color: #111; border: 1px solid #333; border-radius: 0.5rem; color: white; padding: 0.5rem; transition: 0.2s; }
+input:focus, select:focus { outline: none; border-color: #0ff; box-shadow: 0 0 10px cyan; }
+button.neon-btn { background: linear-gradient(to right, #0ff, #f0f); color: black; font-weight: bold; border-radius: 1rem; padding: 0.75rem 2rem; transition: 0.3s; }
+button.neon-btn:hover { box-shadow: 0 0 15px #0ff, 0 0 25px #f0f; transform: translateY(-2px); }
+#successPopup { position: fixed; inset: 0; display: flex; justify-content:center; align-items:center; font-size:2rem; background: rgba(0,0,0,0.8); color:#0ff; font-family: 'Bungee', sans-serif; opacity:0; pointer-events:none; transition:0.5s; }
+#successPopup.show { opacity:1; pointer-events:auto; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="sticky top-0 bg-black border-b border-gray-800 z-50">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold tracking-widest">CHARLOVE</h1>
+    <a href="cart.html" class="text-sm text-gray-400 hover:text-white transition">← Back to Cart</a>
+  </div>
+</header>
+
+<main class="container mx-auto px-6 py-12 grid lg:grid-cols-3 gap-10">
+
+<!-- Payment Form -->
+<section class="lg:col-span-2 space-y-6 bg-gray-900 p-6 rounded-xl neon-glow">
+  <h2 class="text-2xl font-bold mb-6">Payment Information</h2>
+
+  <div class="space-y-4">
+    <div>
+      <label class="block text-gray-400 text-sm mb-1">Cardholder Name</label>
+      <input type="text" placeholder="John Doe" class="w-full">
+    </div>
+
+    <div>
+      <label class="block text-gray-400 text-sm mb-1">Card Number</label>
+      <input type="text" placeholder="1234 5678 9012 3456" class="w-full">
+    </div>
+
+    <div class="flex gap-4">
+      <div class="flex-1">
+        <label class="block text-gray-400 text-sm mb-1">Expiry</label>
+        <input type="text" placeholder="MM/YY" class="w-full">
+      </div>
+      <div class="flex-1">
+        <label class="block text-gray-400 text-sm mb-1">CVV</label>
+        <input type="text" placeholder="123" class="w-full">
+      </div>
+    </div>
+
+    <button id="payBtn" class="neon-btn w-full mt-4">Pay $99</button>
+  </div>
+</section>
+
+<!-- Order Summary -->
+<aside class="bg-gray-900 p-6 rounded-xl neon-glow h-fit">
+  <h3 class="text-xl font-semibold mb-6">Order Summary</h3>
+  <div class="space-y-3 text-sm">
+    <div class="flex justify-between">
+      <span class="text-gray-400">Subtotal</span>
+      <span>$89</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="text-gray-400">Shipping</span>
+      <span>$10</span>
+    </div>
+    <div class="border-t border-gray-700 my-3"></div>
+    <div class="flex justify-between text-lg font-bold">
+      <span>Total</span>
+      <span>$99</span>
+    </div>
+  </div>
+</aside>
+
+</main>
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup">PAYMENT SUCCESS 🚀</div>
+
+<script>
+const payBtn = document.getElementById('payBtn');
+const successPopup = document.getElementById('successPopup');
+
+payBtn.addEventListener('click', () => {
+  successPopup.classList.add('show');
+  setTimeout(() => successPopup.classList.remove('show'), 2000);
+});
+</script>
+
+</body>
+</html>

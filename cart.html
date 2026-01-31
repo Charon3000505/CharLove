@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clover | Cart</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+/* Neon Glow */
+.neon-glow {
+  border-radius: 1rem;
+  transition: 0.3s;
+}
+.neon-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0,255,255,0.5), 0 0 30px rgba(255,0,255,0.4);
+}
+
+/* Level Up Glow Boost */
+.level-glow {
+  box-shadow: 
+    0 0 25px rgba(0,255,255,0.9),
+    0 0 60px rgba(255,0,255,0.8);
+}
+
+/* Badge Animation */
+.badge-show {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Quantity Button */
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #111;
+  border: 1px solid #333;
+  transition: 0.2s;
+}
+.qty-btn:hover {
+  background: #222;
+}
+</style>
+</head>
+
+<body class="min-h-screen">
+
+<!-- HEADER -->
+<header class="sticky top-0 bg-black border-b border-gray-800 z-50">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+    <a href="Shop.html" class="text-sm text-gray-400 hover:text-white transition">
+      ← Back to Shop
+    </a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="container mx-auto px-6 py-12 grid lg:grid-cols-3 gap-10">
+
+<!-- LEFT -->
+<section class="lg:col-span-2 space-y-6">
+
+<!-- XP PANEL -->
+<div id="xpPanel" class="bg-gray-900 rounded-xl p-5 neon-glow mb-6 relative overflow-hidden">
+  <div class="flex justify-between items-center mb-2">
+    <h3 class="font-semibold tracking-wide flex items-center gap-2">
+      ⚡ Street XP
+      <span id="badge" class="text-xs px-2 py-1 rounded-full bg-gray-800 opacity-0 scale-50 transition">
+        🏅 Rookie
+      </span>
+    </h3>
+    <span id="levelText" class="text-sm text-cyan-400">Street Rookie</span>
+  </div>
+
+  <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+    <div id="xpBar"
+      class="h-full bg-gradient-to-r from-cyan-400 to-pink-500 transition-all duration-500"
+      style="width:10%"></div>
+  </div>
+
+  <p id="xpText" class="text-xs text-gray-400 mt-2">XP: 10 / 100</p>
+
+  <!-- LEVEL POPUP -->
+  <div id="levelPopup"
+    class="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm text-xl font-bold tracking-widest opacity-0 pointer-events-none transition">
+    LEVEL UP 🚀
+  </div>
+</div>
+
+<!-- CART ITEM -->
+<div class="flex gap-4 bg-gray-900 p-4 rounded-xl neon-glow">
+  <img src="https://i.pinimg.com/736x/1c/77/f5/1c77f559356807b6b0c85c003da4822b.jpg"
+       class="w-28 h-32 object-cover rounded-lg">
+
+  <div class="flex-1">
+    <h3 class="font-semibold text-lg">Street Hoodie</h3>
+    <p class="text-gray-400 text-sm mb-2">Size: L</p>
+    <p class="font-bold">$89</p>
+
+    <div class="flex items-center gap-3 mt-3">
+      <button class="qty-btn">−</button>
+      <span>1</span>
+      <button class="qty-btn">+</button>
+    </div>
+  </div>
+
+  <button class="text-gray-500 hover:text-red-500 transition">
+    <i class="fas fa-trash"></i>
+  </button>
+</div>
+
+</section>
+
+<!-- RIGHT -->
+<aside class="bg-gray-900 p-6 rounded-xl neon-glow h-fit">
+<h3 class="text-xl font-semibold mb-6">Order Summary</h3>
+
+<div class="space-y-3 text-sm">
+  <div class="flex justify-between">
+    <span class="text-gray-400">Subtotal</span>
+    <span>$89</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="text-gray-400">Shipping</span>
+    <span>$10</span>
+  </div>
+  <div class="border-t border-gray-700 my-3"></div>
+  <div class="flex justify-between text-lg font-bold">
+    <span>Total</span>
+    <span>$99</span>
+  </div>
+</div>
+
+<button onclick="addXP(50)"
+  class="mt-6 w-full bg-white text-black py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+  Checkout
+</button>
+</aside>
+
+</main>
+
+<!-- SCRIPT -->
+<script>
+let xp = 10;
+let maxXP = 100;
+let currentLevel = "Street Rookie";
+
+function getLevel() {
+  if (xp >= 200) return "Street Legend";
+  if (xp >= 100) return "Urban Rider";
+  return "Street Rookie";
+}
+
+function updateXPUI() {
+  const xpBar = document.getElementById("xpBar");
+  const xpText = document.getElementById("xpText");
+  const levelText = document.getElementById("levelText");
+  const badge = document.getElementById("badge");
+
+  const newLevel = getLevel();
+
+  if (newLevel !== currentLevel) {
+    triggerLevelUp(newLevel);
+    currentLevel = newLevel;
+  }
+
+  let progress = (xp % maxXP) / maxXP * 100;
+  xpBar.style.width = progress + "%";
+  xpText.innerText = `XP: ${xp} / ${maxXP}`;
+  levelText.innerText = newLevel;
+  badge.innerText = "🏅 " + newLevel.split(" ")[1];
+}
+
+function triggerLevelUp() {
+  const panel = document.getElementById("xpPanel");
+  const popup = document.getElementById("levelPopup");
+  const badge = document.getElementById("badge");
+
+  panel.classList.add("level-glow");
+  badge.classList.add("badge-show");
+  popup.style.opacity = "1";
+
+  setTimeout(() => {
+    panel.classList.remove("level-glow");
+    popup.style.opacity = "0";
+  }, 1200);
+}
+
+function addXP(amount) {
+  xp += amount;
+  if (xp < 0) xp = 0;
+  updateXPUI();
+}
+
+// Hooks
+document.querySelectorAll(".qty-btn").forEach(btn => {
+  btn.addEventListener("click", () => addXP(20));
+});
+document.querySelectorAll(".fa-trash").forEach(btn => {
+  btn.addEventListener("click", () => addXP(-20));
+});
+
+// Init
+updateXPUI();
+</script>
+
+</body>
+</html>

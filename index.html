@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="gif" href="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        
+/* Front/Back Hover Smooth */
+.front-img, .back-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.back-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(1.05);
+}
+.group:hover .front-img {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.group:hover .back-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay only for glow */
+.overlay-glow {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.15);
+  transition: background-color 0.3s;
+}
+.group:hover .overlay-glow {
+  background-color: rgba(0,0,0,0.25);
+}
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Main Navbar -->
+  <header id="navbar" class="sticky top-0 z-50 bg-black border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <!-- Top Section - Logo and Actions -->
+            <div class="flex items-center justify-between mb-4">
+                <!-- Left Side - Logo -->
+                <div class="flex items-center">
+                    <!-- Clover Icon -->
+                    <div class="flex items-center justify-center mr-3">
+                    </div>
+                    <!-- Logo Text -->
+                    <img src="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif" alt="" class="w-24 h-24">
+                </div>
+                
+                    <div>
+                      <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+                    </div>
+
+                <!-- Right Side - Icons -->
+                <div class="flex items-center space-x-6">
+                    <!-- Search Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    
+                    <!-- User Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                      <a href="# class="relative text-white hover:text-gray-300 transition">
+                        <i class="fas fa-user text-lg"></i>
+                      </a>
+                    </button>
+                    
+                    <!-- Cart Icon -->
+                    <button class="relative text-white hover:text-gray-300 transition">
+                      <a href="cart.html" class="relative text-white hover:text-gray-300 transition">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                      </a>
+                    </button>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobileMenuToggle" class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex justify-center space-x-8">
+                <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    HOME
+                </a>
+                <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    SHOP
+                </a>
+                <a href="about.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    About
+                </a>
+            </nav>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        HOME
+                    </a>
+                    <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        SHOP
+                    </a>
+                    <a href="#" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        About
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+<main id="hero" class="relative w-full h-screen overflow-hidden">
+
+  <div id="carousel" 
+    class="flex flex-nowrap h-full snap-x snap-mandatory scroll-smooth overflow-hidden">
+
+    <!-- Slide 1 -->
+    <div class="relative shrink-0 w-full h-full">
+      <img class="absolute inset-0 w-full h-full object-cover"
+        src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative h-full flex flex-col justify-center px-10 text-white">
+       <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+        <button class="bg-white text-black px-6 py-3 rounded-full w-fit">
+          Explore Collection
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="relative shrink-0 w-full h-full">
+      <img class="absolute inset-0 w-full h-full object-cover"
+        src="https://i.pinimg.com/736x/1c/77/f5/1c77f559356807b6b0c85c003da4822b.jpg">
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="relative shrink-0 w-full h-full">
+      <img class="absolute inset-0 w-full h-full object-cover"
+        src="https://i.pinimg.com/736x/7c/24/1f/7c241f7e3faa9d4921ec32696cb62cf8.jpg">
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+         <!-- Slide 4 -->
+    <div class="relative shrink-0 w-full h-full">
+      <img class="absolute inset-0 w-full h-full object-cover"
+        src="https://i.pinimg.com/736x/d1/04/c1/d104c19593b1c3975739f49371018473.jpg">
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+</main>
+
+<main class="bg-black min-h-screen py-16 px-6 md:px-12">
+  <div class="text-center mb-12">
+    <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+    <p class="text-gray-400 text-lg">Fresh drops. Limited edition, grab yours now.</p>
+  </div>
+
+  <!-- Grid Produk Responsive Tetap 2 Card di Mobile -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+  <!-- Card 1 -->
+    <div class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://fashionsierra.com/cdn/shop/files/S69e0a4607b9f4b36abd10449187d6c44Z.webp?v=1755585262" class="front-img" alt="Street Hoodie Front">
+      <img src="https://fashionsierra.com/cdn/shop/files/S939c10ca7f0c4d198dbb24648ef08714B.webp?v=1755585262" class="back-img" alt="Street Hoodie Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-red-600">NEW</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Minimalist Flag Patchwork Hoodie</h3>
+        <p class="text-lg font-bold mb-5">$89 <span class="text-lg text-gray-400 line-through ml-2">$120</span></p>
+
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/736x/7c/24/1f/7c241f7e3faa9d4921ec32696cb62cf8.jpg" class="front-img" alt="Urban T-Shirt Front">
+      <img src="https://i.pinimg.com/736x/d1/04/c1/d104c19593b1c3975739f49371018473.jpg" class="back-img" alt="Urban T-Shirt Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-green-500">HOT</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Urban T-Shirt</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$49</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/736x/d1/04/c1/d104c19593b1c3975739f49371018473.jpg" class="front-img" alt="Street Pants Front">
+      <img src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg" class="back-img" alt="Street Pants Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-yellow-500">SALE</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Street Pants</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$75</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="group relative bg-gray-900 rounded-xl overflow-hidden shadow-lg neon-glow aspect-[4/5]">
+      <img src="https://i.pinimg.com/1200x/1d/2c/4a/1d2c4ab265404e3a0715a530f1d1589f.jpg" class="front-img" alt="Street Cap Front">
+      <img src="https://i.pinimg.com/736x/1c/77/f5/1c77f559356807b6b0c85c003da4822b.jpg" class="back-img" alt="Street Cap Back">
+      <span class="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-red-600">NEW</span>
+      <div class="overlay-glow"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
+        <h3 class="text-white font-semibold text-lg mb-1">Street Cap</h3>
+        <p class="text-gray-400 text-sm mb-1">Stylish streetwear fit.</p>
+        <p class="text-white font-bold text-lg">$35</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="bg-black text-gray-400 py-12 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Logo & Description -->
+    <div>
+      <img src="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif" alt="Clover Logo" class="w-24 h-24 mb-4">
+      <p class="text-gray-400 text-sm">Clover Street - Fresh streetwear drops. Limited edition, grab yours now.</p>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h4 class="text-white font-semibold mb-4">Newsletter</h4>
+      <p class="text-gray-400 text-sm mb-2">Sign up to get the latest drops and news.</p>
+      <form class="flex flex-col sm:flex-row gap-2">
+        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white text-white w-full">
+        <button type="submit" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 transition">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-sm">
+    &copy; 2026 Clover Street. All rights reserved.
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+<script>
+
+/* =========================
+   HERO CAROUSEL
+========================= */
+const slides = carousel.children;
+const firstClone = slides[0].cloneNode(true);
+carousel.appendChild(firstClone);
+
+let index = 0;
+const intervalTime = 4000;
+const scrollDuration = 300;
+
+setInterval(() => {
+  index++;
+  const slideWidth = hero.offsetWidth;
+
+  carousel.scrollTo({
+    left: index * slideWidth,
+    behavior: "smooth"
+  });
+
+  if (index === carousel.children.length - 1) {
+    setTimeout(() => {
+      carousel.scrollTo({ left: 0, behavior: "auto" });
+      index = 0;
+    }, scrollDuration);
+  }
+}, intervalTime);
+</script>
+
+</body>
+</html>

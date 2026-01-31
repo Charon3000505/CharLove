@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CharLove</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="gif" href="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .nav-link {
+            position: relative;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 24px;
+            }
+        }
+        
+        .neon-glow {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .neon-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(255,0,255,0.4);
+        }
+        
+        .section-title {
+            font-family: 'Bungee', cursive;
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, cyan, magenta);
+            border-radius: 2px;
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(45deg, cyan, magenta);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, cyan, magenta);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: linear-gradient(to bottom, cyan, magenta);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Main Navbar -->
+    <header id="navbar" class="sticky top-0 z-50 bg-black border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <!-- Top Section - Logo and Actions -->
+            <div class="flex items-center justify-between mb-4">
+                <!-- Left Side - Logo -->
+                <div class="flex items-center">
+                    <!-- Logo Image -->
+                    <img src="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif" alt="CharLove Logo" class="w-20 h-20">
+                </div>
+                
+                <!-- Center - Brand Name -->
+                <div>
+                    <h1 class="font-bungee text-6xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta]">CharLove</h1>
+                </div>
+
+                <!-- Right Side - Icons -->
+                <div class="flex items-center space-x-6">
+                    <!-- Search Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    
+                    <!-- User Icon -->
+                    <button class="text-white hover:text-gray-300 transition">
+                        <a href="#" class="relative text-white hover:text-gray-300 transition">
+                            <i class="fas fa-user text-lg"></i>
+                        </a>
+                    </button>
+                    
+                    <!-- Cart Icon -->
+                    <button class="relative text-white hover:text-gray-300 transition">
+                        <a href="cart.html" class="relative text-white hover:text-gray-300 transition">
+                            <i class="fas fa-shopping-bag text-lg"></i>
+                            <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                        </a>
+                    </button>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobileMenuToggle" class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex justify-center space-x-8">
+                <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    HOME
+                </a>
+                <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider">
+                    SHOP
+                </a>
+                <a href="#" class="nav-link text-white text-sm uppercase tracking-wider border-b-2 border-cyan-400">
+                    ABOUT
+                </a>
+            </nav>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        HOME
+                    </a>
+                    <a href="Shop.html" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-gray-800">
+                        SHOP
+                    </a>
+                    <a href="#" class="nav-link text-white text-sm uppercase tracking-wider py-2 border-b border-cyan-400">
+                        ABOUT
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-96 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://i.pinimg.com/736x/7c/24/1f/7c241f7e3faa9d4921ec32696cb62cf8.jpg" alt="About Hero" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        </div>
+        <div class="relative h-full flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto">
+            <h1 class="font-bungee text-5xl md:text-7xl text-white drop-shadow-[0_0_5px_cyan] drop-shadow-[0_0_10px_magenta] mb-4">
+                OUR STORY
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">
+                Born from the streets, built for the culture. CharLove is more than clothing—it's a movement.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-12 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Logo & Description -->
+            <div>
+                <img src="https://i.pinimg.com/originals/31/2a/5a/312a5abe2d951ddb699f96a85021931e.gif" alt="CharLove Logo" class="w-24 h-24 mb-4">
+                <p class="text-gray-400 text-sm">CharLove - Fresh drops. Limited edition, grab yours now.</p>
+            </div>
+
+            <!-- Social Media -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">FOLLOW US</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-tiktok text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+                <p class="mt-4 text-sm">Tag us with #CharLoveStreet</p>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">NEWSLETTER</h4>
+                <p class="text-gray-400 text-sm mb-2">Sign up to get the latest drops and news.</p>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white text-white w-full">
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-magenta-500 text-white font-semibold rounded-lg hover:opacity-90 transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-sm">
+            &copy; 2026 CharLove. All rights reserved. | Streetwear for the culture.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
